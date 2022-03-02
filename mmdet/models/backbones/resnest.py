@@ -234,6 +234,7 @@ class Bottleneck(_Bottleneck):
     def forward(self, x):
 
         def _inner_forward(x):
+            # blah blah blah
             identity = x
 
             out = self.conv1(x)
