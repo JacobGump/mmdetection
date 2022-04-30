@@ -1,5 +1,10 @@
 # Compatibility of MMDetection 2.x
 
+## MMDetection 2.21.0
+
+In order to support CPU training, the logic of scatter in batch collating has been changed. We recommend to use
+MMCV v1.4.4 or higher. For more details, please refer to [MMCV PR #1621](https://github.com/open-mmlab/mmcv/pull/1621).
+
 ## MMDetection 2.18.1
 
 ### MMCV compatibility
@@ -136,8 +141,8 @@ Details can be found in `configs/legacy`.
 
 ## pycocotools compatibility
 
-`mmpycocotools` is the OpenMMlab's folk of official `pycocotools`, which works for both MMDetection and Detectron2.
-Before [PR 4939](https://github.com/open-mmlab/mmdetection/pull/4939), since `pycocotools` and `mmpycocotool` have the same package name, if users already installed `pyccocotools` (installed Detectron2 first under the same environment), then the setup of MMDetection will skip installing `mmpycocotool`. Thus MMDetection fails due to the missing `mmpycocotools`.
+`mmpycocotools` is the OpenMMlab's fork of official `pycocotools`, which works for both MMDetection and Detectron2.
+Before [PR 4939](https://github.com/open-mmlab/mmdetection/pull/4939), since `pycocotools` and `mmpycocotool` have the same package name, if users already installed `pycocotools` (installed Detectron2 first under the same environment), then the setup of MMDetection will skip installing `mmpycocotool`. Thus MMDetection fails due to the missing `mmpycocotools`.
 If MMDetection is installed before Detectron2, they could work under the same environment.
 [PR 4939](https://github.com/open-mmlab/mmdetection/pull/4939) deprecates mmpycocotools in favor of official pycocotools.
 Users may install MMDetection and Detectron2 under the same environment after [PR 4939](https://github.com/open-mmlab/mmdetection/pull/4939), no matter what the installation order is.

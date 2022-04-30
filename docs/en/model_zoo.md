@@ -242,9 +242,29 @@ Please refer to [SOLO](https://github.com/open-mmlab/mmdetection/blob/master/con
 
 Please refer to [QueryInst](https://github.com/open-mmlab/mmdetection/blob/master/configs/queryinst) for details.
 
+### PanopticFPN
+
+Please refer to [PanopticFPN](https://github.com/open-mmlab/mmdetection/blob/master/configs/panoptic_fpn) for details.
+
+### MaskFormer
+
+Please refer to [MaskFormer](https://github.com/open-mmlab/mmdetection/blob/master/configs/maskformer) for details.
+
+### DyHead
+
+Please refer to [DyHead](https://github.com/open-mmlab/mmdetection/blob/master/configs/dyhead) for details.
+
+### Mask2Former
+
+Please refer to [Mask2Former](https://github.com/open-mmlab/mmdetection/blob/master/configs/mask2former) for details.
+
+### Efficientnet
+
+Please refer to [Efficientnet](https://github.com/open-mmlab/mmdetection/blob/master/configs/efficientnet) for details.
+
 ### Other datasets
 
-We also benchmark some methods on [PASCAL VOC](https://github.com/open-mmlab/mmdetection/blob/master/configs/pascal_voc), [Cityscapes](https://github.com/open-mmlab/mmdetection/blob/master/configs/cityscapes) and [WIDER FACE](https://github.com/open-mmlab/mmdetection/blob/master/configs/wider_face).
+We also benchmark some methods on [PASCAL VOC](https://github.com/open-mmlab/mmdetection/blob/master/configs/pascal_voc), [Cityscapes](https://github.com/open-mmlab/mmdetection/blob/master/configs/cityscapes), [OpenImages](https://github.com/open-mmlab/mmdetection/blob/master/configs/openimages) and [WIDER FACE](https://github.com/open-mmlab/mmdetection/blob/master/configs/wider_face).
 
 ### Pre-trained Models
 
@@ -276,7 +296,7 @@ We provide [benchmark.py](https://github.com/open-mmlab/mmdetection/blob/master/
 The script benchmarkes the model with 2000 images and calculates the average time ignoring first 5 times. You can change the output log interval (defaults: 50) by setting `LOG-INTERVAL`.
 
 ```shell
-python toools/benchmark.py ${CONFIG} ${CHECKPOINT} [--log-interval $[LOG-INTERVAL]] [--fuse-conv-bn]
+python tools/benchmark.py ${CONFIG} ${CHECKPOINT} [--log-interval $[LOG-INTERVAL]] [--fuse-conv-bn]
 ```
 
 The latency of all models in our model zoo is benchmarked without setting `fuse-conv-bn`, you can get a lower latency by setting it.

@@ -9,38 +9,60 @@
 
 Compatible MMDetection and MMCV versions are shown as below. Please install the correct version of MMCV to avoid installation issues.
 
-| MMDetection version |    MMCV version     |
-|:-------------------:|:-------------------:|
-| master              | mmcv-full>=1.3.17, <1.5.0 |
-| 2.19.1              | mmcv-full>=1.3.17, <1.5.0 |
-| 2.19.0              | mmcv-full>=1.3.17, <1.5.0 |
-| 2.18.0              | mmcv-full>=1.3.17, <1.4.0 |
-| 2.17.0              | mmcv-full>=1.3.14, <1.4.0 |
-| 2.16.0              | mmcv-full>=1.3.8, <1.4.0 |
-| 2.15.1              | mmcv-full>=1.3.8, <1.4.0 |
-| 2.15.0              | mmcv-full>=1.3.8, <1.4.0 |
-| 2.14.0              | mmcv-full>=1.3.8, <1.4.0 |
-| 2.13.0              | mmcv-full>=1.3.3, <1.4.0 |
-| 2.12.0              | mmcv-full>=1.3.3, <1.4.0 |
-| 2.11.0              | mmcv-full>=1.2.4, <1.4.0 |
-| 2.10.0              | mmcv-full>=1.2.4, <1.4.0 |
-| 2.9.0               | mmcv-full>=1.2.4, <1.4.0 |
-| 2.8.0               | mmcv-full>=1.2.4, <1.4.0 |
-| 2.7.0               | mmcv-full>=1.1.5, <1.4.0 |
-| 2.6.0               | mmcv-full>=1.1.5, <1.4.0 |
-| 2.5.0               | mmcv-full>=1.1.5, <1.4.0 |
-| 2.4.0               | mmcv-full>=1.1.1, <1.4.0 |
-| 2.3.0               | mmcv-full==1.0.5    |
-| 2.3.0rc0            | mmcv-full>=1.0.2    |
-| 2.2.1               | mmcv==0.6.2         |
-| 2.2.0               | mmcv==0.6.2         |
-| 2.1.0               | mmcv>=0.5.9, <=0.6.1|
-| 2.0.0               | mmcv>=0.5.1, <=0.5.8|
+| MMDetection version |       MMCV version        |
+|:-------------------:|:-------------------------:|
+|       master        | mmcv-full>=1.3.17, <1.6.0 |
+|       2.24.1        | mmcv-full>=1.3.17, <1.6.0 |
+|       2.24.0        | mmcv-full>=1.3.17, <1.6.0 |
+|       2.23.0        | mmcv-full>=1.3.17, <1.5.0 |
+|       2.22.0        | mmcv-full>=1.3.17, <1.5.0 |
+|       2.21.0        | mmcv-full>=1.3.17, <1.5.0 |
+|       2.20.0        | mmcv-full>=1.3.17, <1.5.0 |
+|       2.19.1        | mmcv-full>=1.3.17, <1.5.0 |
+|       2.19.0        | mmcv-full>=1.3.17, <1.5.0 |
+|       2.18.0        | mmcv-full>=1.3.17, <1.4.0 |
+|       2.17.0        | mmcv-full>=1.3.14, <1.4.0 |
+|       2.16.0        | mmcv-full>=1.3.8, <1.4.0  |
+|       2.15.1        | mmcv-full>=1.3.8, <1.4.0  |
+|       2.15.0        | mmcv-full>=1.3.8, <1.4.0  |
+|       2.14.0        | mmcv-full>=1.3.8, <1.4.0  |
+|       2.13.0        | mmcv-full>=1.3.3, <1.4.0  |
+|       2.12.0        | mmcv-full>=1.3.3, <1.4.0  |
+|       2.11.0        | mmcv-full>=1.2.4, <1.4.0  |
+|       2.10.0        | mmcv-full>=1.2.4, <1.4.0  |
+|        2.9.0        | mmcv-full>=1.2.4, <1.4.0  |
+|        2.8.0        | mmcv-full>=1.2.4, <1.4.0  |
+|        2.7.0        | mmcv-full>=1.1.5, <1.4.0  |
+|        2.6.0        | mmcv-full>=1.1.5, <1.4.0  |
+|        2.5.0        | mmcv-full>=1.1.5, <1.4.0  |
+|        2.4.0        | mmcv-full>=1.1.1, <1.4.0  |
+|        2.3.0        |     mmcv-full==1.0.5      |
+|      2.3.0rc0       |     mmcv-full>=1.0.2      |
+|        2.2.1        |        mmcv==0.6.2        |
+|        2.2.0        |        mmcv==0.6.2        |
+|        2.1.0        |   mmcv>=0.5.9, <=0.6.1    |
+|        2.0.0        |   mmcv>=0.5.1, <=0.5.8    |
 
 **Note:** You need to run `pip uninstall mmcv` first if you have mmcv installed.
 If mmcv and mmcv-full are both installed, there will be `ModuleNotFoundError`.
 
 ## Installation
+
+### A from-scratch setup script
+
+Assuming that you already have CUDA 10.1 installed, here is a full script for setting up MMDetection with conda.
+You can refer to the step-by-step installation instructions in the next section.
+
+```shell
+conda create -n openmmlab python=3.7 pytorch==1.6.0 cudatoolkit=10.1 torchvision -c pytorch -y
+conda activate openmmlab
+pip install openmim
+mim install mmcv-full
+git clone https://github.com/open-mmlab/mmdetection.git
+cd mmdetection
+pip install -r requirements/build.txt
+pip install -v -e .
+```
 
 ### Prepare environment
 
@@ -105,6 +127,13 @@ Or you can still install MMDetection manually:
 
     Optionally you can compile mmcv from source if you need to develop both mmcv and mmdet. Refer to the [guide](https://github.com/open-mmlab/mmcv#installation) for details.
 
+    mmcv-full is only compiled on PyTorch 1.x.0 because the compatibility usually holds between 1.x.0 and 1.x.1. If your PyTorch version is 1.x.1, you can install mmcv-full compiled with PyTorch 1.x.0 and it usually works well.
+
+    ```
+    # We can ignore the micro version of PyTorch
+    pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu110/torch1.7/index.html
+    ```
+
 2. Install MMDetection.
 
     You can simply install mmdetection with the following command:
@@ -132,7 +161,7 @@ Or you can still install MMDetection manually:
     # for LVIS dataset
     pip install git+https://github.com/lvis-dataset/lvis-api.git
     # for albumentations
-    pip install albumentations>=0.3.2 --no-binary imgaug,albumentations
+    pip install -r requirements/albu.txt
     ```
 
 **Note:**
@@ -146,15 +175,18 @@ you can install it before installing MMCV.
 c. Some dependencies are optional. Simply running `pip install -v -e .` will
  only install the minimum runtime requirements. To use optional dependencies like `albumentations` and `imagecorruptions` either install them manually with `pip install -r requirements/optional.txt` or specify desired extras when calling `pip` (e.g. `pip install -v -e .[optional]`). Valid keys for the extras field are: `all`, `tests`, `build`, and `optional`.
 
-d. If you would like to use `albumentations`, we suggest using
-`pip install albumentations>=0.3.2 --no-binary imgaug,albumentations`. If you simply use
-`pip install albumentations>=0.3.2`, it will install `opencv-python-headless` simultaneously (even though you have already installed `opencv-python`). We should not allow `opencv-python` and `opencv-python-headless` installed at the same time, because it might cause unexpected issues. Please refer to [official documentation](https://albumentations.ai/docs/getting_started/installation/#note-on-opencv-dependencies) for more details.
+d. If you would like to use `albumentations`, we suggest using `pip install -r requirements/albu.txt` or
+`pip install -U albumentations --no-binary qudida,albumentations`. If you simply use `pip install albumentations>=0.3.2`,
+it will install `opencv-python-headless` simultaneously (even though you have already
+installed `opencv-python`). We recommended checking the environment after installing `albumentation` to
+ensure that `opencv-python` and `opencv-python-headless` are not installed at the same time, because it might cause unexpected issues if they both are installed. Please refer
+to [official documentation](https://albumentations.ai/docs/getting_started/installation/#note-on-opencv-dependencies) for more details.
 
 ### Install without GPU support
 
 MMDetection can be built for CPU only environment (where CUDA isn't available).
 
-In CPU mode you can run the demo/webcam_demo.py for example.
+In CPU mode you can train (requires MMCV version >= 1.4.4), test or inference a model.
 However some functionality is gone in this mode:
 
 - Deformable Convolution
@@ -170,7 +202,7 @@ However some functionality is gone in this mode:
 - sigmoid_focal_loss_cuda
 - bbox_overlaps
 
-If you try to run inference with a model containing above ops, an error will be raised.
+If you try to train/test/inference a model containing above ops, an error will be raised.
 The following table lists affected algorithms.
 
 |                        Operator                         |                            Model                             |
@@ -179,8 +211,6 @@ The following table lists affected algorithms.
 |                      MaskedConv2d                       |                       Guided Anchoring                       |
 |                         CARAFE                          |                            CARAFE                            |
 |                      SyncBatchNorm                      |                           ResNeSt                            |
-
-**Notice:** MMDetection does not support training with CPU for now.
 
 ### Another option: Docker Image
 
@@ -195,26 +225,6 @@ Run it with
 
 ```shell
 docker run --gpus all --shm-size=8g -it -v {DATA_DIR}:/mmdetection/data mmdetection
-```
-
-### A from-scratch setup script
-
-Assuming that you already have CUDA 10.1 installed, here is a full script for setting up MMDetection with conda.
-
-```shell
-conda create -n openmmlab python=3.7 -y
-conda activate openmmlab
-
-conda install pytorch==1.6.0 torchvision==0.7.0 cudatoolkit=10.1 -c pytorch -y
-
-# install the latest mmcv
-pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.6.0/index.html
-
-# install mmdetection
-git clone https://github.com/open-mmlab/mmdetection.git
-cd mmdetection
-pip install -r requirements/build.txt
-pip install -v -e .
 ```
 
 ### Developing with multiple MMDetection versions
