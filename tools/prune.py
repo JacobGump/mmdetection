@@ -35,8 +35,9 @@ config_list = [{
 def parse_args():
     parser = argparse.ArgumentParser(
         description='MMDet test (and eval) a model')
-    parser.add_argument('config', help='test config file path')
-    parser.add_argument('checkpoint', help='checkpoint file')
+    parser.add_argument('--config', type = str, help='test config file path', default = './checkpoints/faster_rcnn_r50_fpn_1x_coco.py')
+    parser.add_argument('--checkpoint',type = str, help='checkpoint file', default = \
+        './checkpoints/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth')
     parser.add_argument('--local_rank', type=int, default=0)
     parser.add_argument(
         '--gpu-id',
@@ -145,18 +146,6 @@ def main():
     for name, mask in masks.items():
         print(name, ' sparsity : ', '{:.2}'.format(mask['weight'].sum() / mask['weight'].numel()))
 
-    # need to unwrap the model, if the model is wrapped before speedup
-    pruner._unwrap_model()
-
-    # get dummy input
-    dummy = None
-    for i, data in enumerate(data_loader):
-        with torch.no_grad():
-            dummy = data
-            break
-    print(**dummy)
-
-    ModelSpeedup(model, **dummy, masks).speedup_model()
     
 
 
