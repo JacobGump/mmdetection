@@ -142,12 +142,19 @@ def main():
     pruner = L1NormPruner(model, config_list)
 
     _, masks = pruner.compress()
-    # show the masks sparsity
+
+    cnt = 0
     for name, mask in masks.items():
-        print(name, ' sparsity : ', '{:.2}'.format(mask['weight'].sum() / mask['weight'].numel()))
-
-    
-
+        print(name)
+        print(mask['weight'].shape)
+        output_chn = mask['weight'].shape[0]
+        for i in range(output_chn):
+            single_mask = mask['weight'][i]
+            print(f"index: {i}, weight sum: {single_mask.reshape(-1).sum()}")
+        cnt += 1
+        if cnt > 1:
+            break
+        
 
 
 if __name__ == '__main__':
